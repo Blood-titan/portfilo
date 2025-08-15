@@ -1,0 +1,6 @@
+ErrorDocument 400 http://praveen.xo.je/error.html
+ErrorDocument 404 http://praveen.xo.je/error.html
+ErrorDocument 403 http://praveen.xo.je/error.html
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Praveen's Portfilo</title>
+    <meta
+      name="description"
+      content="Praveen - Machine Learning Engineer portfolio. Expertise in ML, AI, MLOps, and scalable model deployment."
+    />
+    <title>Praveen's Portfolio</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
       rel="stylesheet"
@@ -12,13 +16,12 @@
       :root {
         --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
         --card: #ffffff;
-        --muted: #9aa0a6;
+        --muted: #b0b4b8;
         --accent: #ffffff;
         --radius: 36px;
         --primary: #ff6f61;
         --primary-hover: #ff826e;
       }
-
       * {
         box-sizing: border-box;
         margin: 0;
@@ -30,17 +33,15 @@
         color: var(--accent);
         overflow-x: hidden;
       }
-
-      /* Fullscreen particle background canvas */
+      /* Particle Background */
       #particles {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        z-index: -1; /* Behind everything */
+        z-index: -1;
       }
-
       .shell {
         max-width: 1100px;
         margin: auto;
@@ -50,7 +51,6 @@
         backdrop-filter: blur(10px);
         box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
       }
-
       /* Navigation */
       nav {
         display: flex;
@@ -58,15 +58,12 @@
         align-items: center;
         padding: 16px 24px;
       }
-
       .nav-left {
         display: flex;
         align-items: center;
         gap: 12px;
       }
-
-      .email-pill,
-      .cv-pill {
+      .pill {
         background: rgba(255, 255, 255, 0.1);
         border-radius: 999px;
         padding: 6px 14px;
@@ -75,20 +72,42 @@
         color: var(--accent);
         transition: all 0.3s ease;
       }
-      .email-pill:hover,
-      .cv-pill:hover {
+      .pill:hover {
         background: rgba(255, 255, 255, 0.2);
       }
-
       .socials a {
         color: var(--muted);
         text-decoration: none;
         transition: color 0.3s ease;
+        margin-left: 10px;
       }
       .socials a:hover {
         color: var(--primary);
       }
-
+      /* Mobile Menu */
+      .menu-toggle {
+        display: none;
+        flex-direction: column;
+        cursor: pointer;
+        gap: 4px;
+      }
+      .menu-toggle span {
+        width: 25px;
+        height: 3px;
+        background: var(--accent);
+      }
+      .socials {
+        display: flex;
+      }
+      .socials.mobile {
+        display: none;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px 0;
+      }
+      .socials.mobile a {
+        margin: 6px 0;
+      }
       /* Hero */
       .hero {
         text-align: center;
@@ -113,7 +132,6 @@
         margin: auto;
         line-height: 1.5;
       }
-
       /* CTA Button */
       .cta-primary {
         background: var(--primary);
@@ -132,7 +150,6 @@
         background: var(--primary-hover);
         box-shadow: 0 5px 15px rgba(255, 111, 97, 0.4);
       }
-
       /* Logo Ticker */
       .logos-wrapper {
         overflow: hidden;
@@ -161,7 +178,6 @@
           transform: translateX(-50%);
         }
       }
-
       /* Services */
       .services {
         text-align: center;
@@ -190,14 +206,12 @@
       .card p {
         font-size: 14px;
       }
-
       /* Contact */
       .contact {
         text-align: center;
         padding: 48px 24px;
         background: rgba(255, 255, 255, 0.05);
       }
-
       /* Footer */
       footer {
         padding: 18px 24px;
@@ -206,11 +220,20 @@
         display: flex;
         justify-content: space-between;
       }
-
+      /* Responsive */
       @media (max-width: 768px) {
         nav {
           flex-direction: column;
-          gap: 10px;
+          align-items: flex-start;
+        }
+        .menu-toggle {
+          display: flex;
+        }
+        .socials.desktop {
+          display: none;
+        }
+        .socials.mobile {
+          display: flex;
         }
         h1 {
           font-size: 28px;
@@ -219,16 +242,22 @@
     </style>
   </head>
   <body>
-    <!-- Particle Background -->
     <canvas id="particles"></canvas>
-
     <div class="shell">
       <nav>
         <div class="nav-left">
-          <div class="email-pill" id="copyEmail">praveen33105@gmail.com</div>
-          <div class="cv-pill" onclick="downloadCV()">CV</div>
+          <div class="pill" id="copyEmail">praveen33105@gmail.com</div>
+          <div class="pill" onclick="downloadCV()">CV</div>
         </div>
-        <div class="socials">
+        <div class="menu-toggle" onclick="toggleMenu()">
+          <span></span><span></span><span></span>
+        </div>
+        <div class="socials desktop">
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+        </div>
+        <div class="socials mobile" id="mobileMenu">
           <a href="#">LinkedIn</a>
           <a href="#">GitHub</a>
           <a href="#">Twitter</a>
@@ -237,19 +266,21 @@
 
       <section class="hero">
         <div class="avatar">
-          <img src="file.jpg" alt="Praveen - Machine Learning Engineer" />
+          <img
+            src="/assest/image/profile_pic/file.jpg"
+            alt="Portrait of Praveen, Machine Learning Engineer"
+          />
         </div>
         <h1>Hello! This is me</h1>
         <p>
           I am a Machine Learning Engineer interested in developing, training,
           and deploying scalable ML & AI models for real-world applications.
         </p>
-        <button class="cta-primary" onclick="goToContactPage()">
+        <button class="cta-primary" onclick="location.href='/about/'">
           All About Me
         </button>
       </section>
 
-      <!-- Smooth Logo Ticker -->
       <div class="logos-wrapper">
         <div class="logos">
           <div class="logo">TensorFlow</div>
@@ -258,7 +289,6 @@
           <div class="logo">MLflow</div>
           <div class="logo">Docker</div>
           <div class="logo">Kubernetes</div>
-          <!-- Duplicates for smooth animation -->
           <div class="logo">TensorFlow</div>
           <div class="logo">PyTorch</div>
           <div class="logo">AWS</div>
@@ -308,7 +338,7 @@
         >
           Email Me
         </button>
-        <button class="cv-pill" onclick="copyWhatsapp()">WhatsApp</button>
+        <button class="pill" onclick="copyWhatsapp()">WhatsApp</button>
       </section>
 
       <footer>
@@ -318,14 +348,14 @@
     </div>
 
     <script>
-      // Smooth scroll
-      function scrollToContact() {
-        document;
-      }
-      function goToContactPage() {
-        window.location.href = "aboutme.html";
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.style.display = menu.style.display === "flex" ? "none" : "flex";
       }
 
+      function downloadCV() {
+        alert("Download CV functionality goes here.");
+      }
       function copyWhatsapp() {
         navigator.clipboard
           .writeText("+1234567890")
@@ -346,7 +376,6 @@
       const ctx = canvas.getContext("2d");
       let particles = [];
       let w, h;
-
       function initCanvas() {
         w = canvas.width = window.innerWidth;
         h = canvas.height = window.innerHeight;
@@ -361,7 +390,6 @@
           });
         }
       }
-
       function drawParticles() {
         ctx.clearRect(0, 0, w, h);
         ctx.fillStyle = "rgba(255,255,255,0.6)";
@@ -371,13 +399,11 @@
           ctx.fill();
           p.x += p.dx;
           p.y += p.dy;
-
           if (p.x < 0 || p.x > w) p.dx *= -1;
           if (p.y < 0 || p.y > h) p.dy *= -1;
         });
         requestAnimationFrame(drawParticles);
       }
-
       window.addEventListener("resize", initCanvas);
       initCanvas();
       drawParticles();

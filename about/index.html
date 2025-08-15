@@ -4,9 +4,42 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Me - Praveen V</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="particles.js"></script>
+    <link rel="stylesheet" href="/assest/css/style.css" />
     <script defer src="script.js"></script>
+    <style>
+      /* Highlight active nav */
+      nav a[aria-current="page"] {
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      /* Section cards */
+      .section-card {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 24px;
+        border-radius: 16px;
+        margin-top: 20px;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      .section-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+      }
+
+      /* Lists inside cards */
+      .section-card ul {
+        padding-left: 20px;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      /* Card headings */
+      .section-card h2 {
+        margin-bottom: 10px;
+        font-size: 22px;
+        color: var(--accent);
+      }
+    </style>
   </head>
   <body>
     <canvas id="particles"></canvas>
@@ -15,12 +48,12 @@
       <header>
         <nav>
           <div class="nav-left">
-            <a href="index.html">Home</a>
-            <a href="aboutme.html" aria-current="page">About</a>
-            <a href="skills.html">Skills</a>
-            <a href="projects.html">Projects</a>
-            <a href="resume.html">Resume</a>
-            <a href="contact.html">Contact</a>
+            <a href="/">Home</a>
+            <a href="/about/" aria-current="page">About</a>
+            <a href="/skills/">Skills</a>
+            <a href="/projects/">Projects</a>
+            <a href="/resume/">Resume</a>
+            <a href="/contact/">Contact</a>
           </div>
           <div class="socials">
             <a href="https://linkedin.com/in/praveen-v-ml" target="_blank"
@@ -32,7 +65,7 @@
       </header>
 
       <main>
-        <section class="hero">
+        <div class="section-card">
           <h1>About Me</h1>
           <p>
             Hi, I’m <strong>Praveen V</strong> — a Machine Learning Engineer in
@@ -40,9 +73,9 @@
             meaningful insights and building AI-powered solutions that solve
             real-world problems.
           </p>
-        </section>
+        </div>
 
-        <section class="hero" style="margin-top: 20px;">
+        <div class="section-card">
           <h2>My Journey</h2>
           <p>
             I’m currently pursuing my B.E in Artificial Intelligence & Machine
@@ -56,9 +89,9 @@
             something new with each one. My internship experiences have given me
             a taste of the industry, and I’m eager to keep pushing forward.
           </p>
-        </section>
+        </div>
 
-        <section class="hero" style="margin-top: 20px;">
+        <div class="section-card">
           <h2>Core Skills</h2>
           <ul>
             <li>Python (NumPy, Pandas, Scikit-Learn, Matplotlib, Streamlit)</li>
@@ -69,9 +102,9 @@
             <li>Data cleaning, preprocessing, and feature engineering</li>
             <li>Version control with Git & GitHub</li>
           </ul>
-        </section>
+        </div>
 
-       <section class="hero" style="margin-top: 20px;">
+        <div class="section-card">
           <h2>Outside of Code</h2>
           <p>
             When I’m not experimenting with algorithms, you might find me
@@ -79,7 +112,7 @@
             enjoying Tamil and English movies. I believe a good engineer stays
             curious — both in and out of the lab.
           </p>
-        </section>
+        </div>
       </main>
     </div>
 
@@ -93,5 +126,47 @@
         <a href="https://github.com/Blood-titan" target="_blank">GitHub</a>
       </div>
     </footer>
+
+    <script>
+      // Simple particle background
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+      let w, h;
+
+      function initCanvas() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        particles = [];
+        for (let i = 0; i < 50; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 2 + 1,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5,
+          });
+        }
+      }
+
+      function drawParticles() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        particles.forEach((p) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > w) p.dx *= -1;
+          if (p.y < 0 || p.y > h) p.dy *= -1;
+        });
+        requestAnimationFrame(drawParticles);
+      }
+
+      window.addEventListener("resize", initCanvas);
+      initCanvas();
+      drawParticles();
+    </script>
   </body>
 </html>

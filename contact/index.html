@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - Praveen V</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      :root {
+        --bg-gradient: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        --card: #ffffff;
+        --muted: #c0c5ca;
+        --accent: #ff6f61;
+        --radius: 36px;
+        --primary: #ff6f61;
+        --primary-hover: #ff826e;
+        --text-light: #fff;
+        --text-muted: #c0c5ca;
+      }
+
+      body {
+        background: var(--bg-gradient);
+        color: var(--text-light);
+        font-family: "Segoe UI", sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      nav a[aria-current="page"] {
+        color: var(--primary);
+        font-weight: bold;
+      }
+
+      .contact-container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 24px;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 16px;
+        text-align: center;
+      }
+
+      .contact-info {
+        margin-bottom: 24px;
+      }
+
+      .contact-info p {
+        margin: 6px 0;
+        color: var(--text-light);
+      }
+
+      .contact-form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        text-align: left;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        padding: 10px;
+        border: none;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+        width: 100%;
+        font-family: inherit;
+        font-size: 1rem;
+      }
+
+      .contact-form input::placeholder,
+      .contact-form textarea::placeholder {
+        color: var(--muted);
+        opacity: 1;
+      }
+
+      .contact-form button {
+        padding: 10px 20px;
+        border: none;
+        background: var(--primary);
+        color: #fff;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: bold;
+        transition: background 0.3s;
+      }
+
+      .contact-form button:hover {
+        background: var(--primary-hover);
+      }
+
+      .note {
+        margin-top: 16px;
+        font-size: 14px;
+        color: #aaa;
+      }
+
+      /* Particle canvas — full screen behind content */
+      #particles {
+        position: fixed;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* behind .shell/nav/footer */
+        pointer-events: none;
+      }
+
+      .shell {
+        max-width: 1100px;
+        margin: auto;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+        padding: 16px;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 16px 24px;
+      }
+
+      .nav-left {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .nav-left a {
+        color: var(--text-light);
+        text-decoration: none;
+        padding: 6px 14px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.1);
+        transition: background 0.3s;
+      }
+      .nav-left a:hover {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .socials a {
+        color: var(--muted);
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+      .socials a:hover {
+        color: var(--primary);
+      }
+
+      h1 {
+        text-align: center;
+        font-size: 2.8rem;
+        margin-bottom: 10px;
+      }
+
+      footer {
+        padding: 18px 24px;
+        font-size: 12px;
+        color: var(--muted);
+        display: flex;
+        justify-content: space-between;
+      }
+
+      footer a {
+        color: var(--muted);
+        text-decoration: none;
+      }
+      footer a:hover {
+        color: var(--primary);
+      }
+
+      @media (max-width: 768px) {
+        nav {
+          flex-direction: column;
+          gap: 10px;
+        }
+        h1 {
+          font-size: 28px;
+        }
+        .shell {
+          padding: 8px;
+        }
+        .contact-container {
+          padding: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <canvas id="particles"></canvas>
+    <div class="shell">
+      <header>
+        <nav>
+          <div class="nav-left">
+            <a href="/">Home</a>
+            <a href="/about/">About</a>
+            <a href="/skills/">Skills</a>
+            <a href="/projects/">Projects</a>
+            <a href="/resume/">Resume</a>
+            <a href="/contact/" aria-current="page">Contact</a>
+          </div>
+          <div class="socials">
+            <a href="https://linkedin.com/in/praveen-v-ml" target="_blank"
+              >LinkedIn</a
+            >
+            <a href="https://github.com/Blood-titan" target="_blank">GitHub</a>
+          </div>
+        </nav>
+      </header>
+      <main>
+        <h1>Contact Me</h1>
+        <div class="contact-container">
+          <div class="contact-info">
+            <p><strong>Name:</strong> Praveen V</p>
+            <p><strong>Location:</strong> Chennai, India</p>
+            <p>
+              <strong>Email:</strong>
+              <a
+                href="mailto:praveen33105@gmail.com"
+                style="color: var(--accent)"
+                >praveen33105@gmail.com</a
+              >
+            </p>
+            <p><strong>Phone:</strong> +91-89XXXXXXX</p>
+            <p>
+              <strong>LinkedIn:</strong>
+              <a
+                href="https://linkedin.com/in/praveen-v-ml"
+                target="_blank"
+                style="color: var(--accent)"
+              >
+                linkedin.com/in/praveen-v-ml
+              </a>
+            </p>
+            <p>
+              <strong>GitHub:</strong>
+              <a
+                href="https://github.com/Blood-titan"
+                target="_blank"
+                style="color: var(--accent)"
+              >
+                github.com/Blood-titan
+              </a>
+            </p>
+          </div>
+          <div class="note">
+            💡 I’m currently a college student and fresher in the industry. Open
+            to internships, freelance projects, and collaborative opportunities.
+          </div>
+        </div>
+      </main>
+    </div>
+    <footer>
+      <div>© 2025 All rights reserved.</div>
+      <div>
+        <a href="https://linkedin.com/in/praveen-v-ml" target="_blank"
+          >LinkedIn</a
+        >
+        /
+        <a href="https://github.com/Blood-titan" target="_blank">GitHub</a>
+      </div>
+    </footer>
+    <script>
+      // Particle background animation
+      const canvas = document.getElementById("particles");
+      const ctx = canvas.getContext("2d");
+      let particles = [];
+      let w, h;
+      function initCanvas() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+        particles = [];
+        for (let i = 0; i < 50; i++) {
+          particles.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            r: Math.random() * 2 + 1,
+            dx: (Math.random() - 0.5) * 0.5,
+            dy: (Math.random() - 0.5) * 0.5,
+          });
+        }
+      }
+      function drawParticles() {
+        ctx.clearRect(0, 0, w, h);
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        particles.forEach((p) => {
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+          p.x += p.dx;
+          p.y += p.dy;
+          if (p.x < 0 || p.x > w) p.dx *= -1;
+          if (p.y < 0 || p.y > h) p.dy *= -1;
+        });
+        requestAnimationFrame(drawParticles);
+      }
+      window.addEventListener("resize", initCanvas);
+      initCanvas();
+      drawParticles();
+    </script>
+  </body>
+</html>
